@@ -1,1 +1,1 @@
-Мой конфиг для .zshrc
+My config for .zshrc
