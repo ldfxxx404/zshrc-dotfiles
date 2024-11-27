@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="candy"
+ZSH_THEME="half-life"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -40,9 +40,8 @@ ZSH_THEME="candy"
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# Авторедактирование команд.
-#
- ENABLE_CORRECTION="true"
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -55,79 +54,74 @@ ZSH_THEME="candy"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Раскоментируйте эти строки если хотите изменить время выполнения команд
+# Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# Вы можете выбрать один из предложеных optional three formats:
-
+# You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Хотите использовать свою папку $ZSH/custom?
+# Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Какие плагины Вы хотите устарновить?
-# Дефолтные плагины находятся тут ---> $ZSH/plugins/
-# Кастомные плагины могут быть установлены сюда ---> $ZSH_CUSTOM/plugins/
-# Пример настройки плагина: plugins=(rails git textmate ruby lighthouse)
-# Добавляйте осторожно, некоторые плагины могут замедлить работу.
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git colored-man-pages zsh-syntax-highlighting thefuck)
+plugins=(git zsh-autosuggestions)
+#plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-# Юзер конфиги
+# User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# Ручная установка локали для оболочки
-
+# You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Оптимальный текстовый редактор для локальных и удаленный сессий
-
+# Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
 
-# Флаги компиляции
-#
+# Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Установите удобные псевдонимы, преопределяющие то, что достпно в oh-my-zsh библиотеки,
-# плагины, и темы. Псевдонимы могут находиться тут, хотя пользователям oh-my-zsh
-# рекомендуется объявлять псевдонимы в этой папке ZSH_CUSTOM.
-# Для получения списка используемых псевдонимов выполните это ---> `alias`.
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
 #
-# Пимер псевдонимов команд
+# Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-  
-  alias s="sway"
-  alias c="clear"
-  alias n="nvim"
-  alias update="sudo pacman -Syu"
-  alias ccache="sudo pacman -Sc"
-  alias remove="sudo pacman -Rs"
-  alias install="sudo pacman -S"
-  alias fspace="ncdu"
-  alias kudasai="sudo"
-
-# GOlang
-  export PATH=$PATH:/usr/local/go/bin
 
 
-#Тема
+#export GDK_SCALE=2 sakura
+export GDK_SCALE=2 obs
 
-export GTK_THEME="Otis-forest"
+#UserInput
+autoload -U colors
+autoload -Uz vcs_info
+colors
+zle_highlight=("default:bg=default,fg=cyan")
+export PS1="%{$fg[red]%}Ghoststation %{$fg[green]%}(%~) >>> %{$reset_color%}"
 
-#Демка экрана (фикс)
+#Aliases
+alias z="~/"
+alias ls="tree -L 1"
+alias hc="history -c" 
+#Scale
+export XCURSOR_SIZE=48
+export QT_AUTO_SCREEN_SCALE_FACTOR=2
+export QT_ENABLE_HIGHDPI_SCALING=2
+export GDK_SCALE=2
 
-export QT_QPA_PLATFORM=wayland
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_DESKTOP=sway
-export XDG_CURRENT_SESION_TYPE=wayland
-export GDK_BACKEND="wayland,x11"
+alias c="clear"
+export PATH=$PATH:/usr/local/bin
